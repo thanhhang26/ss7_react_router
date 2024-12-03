@@ -2,9 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import StudentItem from "./StudentItem";
 import { getAllStudent, searchByName } from "../service/studentService";
 import { Link } from "react-router-dom";
+import DeleteComponent from "./DeleteComponent";
 
 function StudentList() {
 	const [studentList, setStudentList] = useState([]);
+	const [show, setShow] = useState(false);
+	const [deleteStudent, setDeleteStudent] = useState({});
 
 	useEffect(() => {
 		setStudentList(getAllStudent());
@@ -17,14 +20,23 @@ function StudentList() {
 		const listSearch = searchByName(searchName);
 		setStudentList(() => [...listSearch]);
 	};
+
+	const showModalDelete = (student) => {
+		setDeleteStudent(student);
+		setShow(true);
+	};
+
+	const closeModal = () => {
+		setShow(false);
+	};
 	return (
 		<div className="card-body">
 			<div className="item-group">
-				<Link className="list-group-item  list-group-item-light w-25 mb-3" id="add-link" to="/add_students">
+				<Link className="list-group-item  c mt-3 mb-3 ms-3" id="add-link" to="/students_list/add_students">
 					Add New Students
 				</Link>
 			</div>
-			<form className="row g-3">
+			<form className="row g-3 ms-2">
 				<div className="col-auto">
 					<input ref={searchNameRef} type="text" className="form-control rounded-0 " id="inputName" placeholder="Enter name" />
 				</div>
@@ -38,7 +50,7 @@ function StudentList() {
 			<table className="table table-light">
 				<thead>
 					<tr>
-						<th className="text-center">id</th>
+						<th className="text-center">ID</th>
 						<th className="text-center">Name</th>
 						<th className="text-center">Phone</th>
 						<th className="text-center">Email</th>
@@ -48,11 +60,12 @@ function StudentList() {
 					</tr>
 				</thead>
 				<tbody>
-					{studentList.map((s) => (
-						<StudentItem key={s.id} student={s} />
+					{studentList.map((s, i) => (
+						<StudentItem key={s.id} student={s} i={i} showModalDelete={showModalDelete} />
 					))}
 				</tbody>
 			</table>
+			<DeleteComponent student={deleteStudent} show={show} closeModal={closeModal} />
 		</div>
 	);
 }
