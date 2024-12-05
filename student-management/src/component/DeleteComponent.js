@@ -8,7 +8,7 @@ function DeleteComponent(props) {
 		props.closeModal();
 	};
 	const handleDelete = () => {
-		deleteStudentById(props.s.id);
+		deleteStudentById(props.student.id);
 		handleClose();
 	};
 
