@@ -1,5 +1,6 @@
 const studentList = [
 	{
+		stt: 1,
 		id: 1,
 		name: "Nguyen Van A",
 		phone: "0912345678",
@@ -7,6 +8,7 @@ const studentList = [
 		address: "Ha Noi",
 	},
 	{
+		stt: 2,
 		id: 2,
 		name: "Nguyen Thi B",
 		phone: "0932432333",
@@ -14,6 +16,7 @@ const studentList = [
 		address: "Ha Noi",
 	},
 	{
+		stt: 3,
 		id: 3,
 		name: "Tran Van C",
 		phone: "0932433212",
