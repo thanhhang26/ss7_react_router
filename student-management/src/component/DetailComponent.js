@@ -12,7 +12,7 @@ function DetailComponent() {
 		}));
 	}, [id]);
 	return (
-		<div className="card-body">
+		<div className="container">
 			<h2>Student Details</h2>
 			<p>ID: {studentDetail.id}</p>
 			<p>Name: {studentDetail.name}</p>

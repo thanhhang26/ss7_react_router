@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { addNewStudent } from "../service/studentService";
+import { addNewStudent, getAllStudent } from "../service/studentService";
 import * as Yup from "yup";
 
 function AddFormikComponent() {
@@ -11,6 +11,7 @@ function AddFormikComponent() {
 
 	const handelSubmit = (value) => {
 		addNewStudent(value);
+		console.log(getAllStudent());
 		navigate("/students_list");
 	};
 

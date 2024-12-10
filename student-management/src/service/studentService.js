@@ -29,7 +29,8 @@ export function getAllStudent() {
 	return studentList;
 }
 export function addNewStudent(student) {
-	studentList.push(student);
+	const s = { ...student, id: +student.id }; // thêm câu lệnh này khi sử dụng "===" ở dòng 38 đến 44. Tốt nhất so sánh nên dùng "=="
+	studentList.push(s);
 }
 export function searchByName(name) {
 	return studentList.filter((student) => student.name.includes(name));
@@ -37,7 +38,7 @@ export function searchByName(name) {
 export function getStudentById(id) {
 	let student = null;
 	for (let i = 0; i < studentList.length; i++) {
-		if (studentList[i].id === +id) student = studentList[i]; //=== là so sánh dữ liệu, nếu muốn so sánh số thì phải thêm dấu + trước giá trị sau dấu "==="
+		if (studentList[i].id === +id) student = studentList[i]; //=== là so sánh dữ liệu, nếu muốn so sánh số thì phải thêm dấu + trước giá trị sau dấu "===". Tốt nhất so sánh nên dùng "=="
 	}
 	return student;
 }

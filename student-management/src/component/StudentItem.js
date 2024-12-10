@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function StudentItem(props) {
-	const { stt, id, name, phone, email } = props.student;
+	const { id, name, phone, email } = props.student;
 	return (
 		<tr>
 			<td className="text-center">{+props.i + 1}</td>
